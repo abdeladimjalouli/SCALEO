@@ -1,540 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Scaleo Production Dashboard</title>
+    <title>Scaleo Production Dashboard</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-
-background:#eef3f8;
-
-height:100vh;
-
-overflow:hidden;
-
-}
-
-:root{
-
---blue:#2158d6;
-
---green:#22b66b;
-
---dark:#1e293b;
-
---light:white;
-
---shadow:0 15px 40px rgba(0,0,0,.08);
-
-}
-
-.container{
-
-display:flex;
-
-height:100vh;
-
-}
-
-/* Sidebar */
-
-.sidebar{
-
-width:260px;
-
-background:white;
-
-box-shadow:var(--shadow);
-
-padding:25px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:25px;
-
-z-index:2;
-
-}
-
-.logo{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-}
-
-.logo img{
-
-width:50px;
-
-}
-
-.logo h2{
-
-font-size:24px;
-
-color:var(--dark);
-
-}
-
-.menu{
-
-display:flex;
-
-flex-direction:column;
-
-gap:15px;
-
-margin-top:30px;
-
-}
-
-.menu button{
-
-background:none;
-
-border:none;
-
-padding:15px;
-
-border-radius:14px;
-
-font-size:15px;
-
-text-align:left;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.menu button:hover{
-
-background:linear-gradient(90deg,var(--blue),var(--green));
-
-color:white;
-
-}
-
-/* MAIN */
-
-.main{
-
-flex:1;
-
-display:flex;
-
-flex-direction:column;
-
-padding:25px;
-
-overflow:auto;
-
-}
-
-/* Header */
-
-.top{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:20px;
-
-}
-
-.top h1{
-
-font-size:32px;
-
-color:var(--dark);
-
-}
-
-.progress-global{
-
-background:white;
-
-padding:20px;
-
-border-radius:20px;
-
-box-shadow:var(--shadow);
-
-margin-bottom:20px;
-
-}
-
-.progress-bar{
-
-height:18px;
-
-background:#ddd;
-
-border-radius:50px;
-
-overflow:hidden;
-
-margin-top:10px;
-
-}
-
-.progress-fill{
-
-width:45%;
-
-height:100%;
-
-background:linear-gradient(90deg,var(--blue),var(--green));
-
-transition:.4s;
-
-}
-
-/* GRID */
-
-.grid{
-
-display:grid;
-
-grid-template-columns:2fr 1fr;
-
-gap:20px;
-
-}
-
-/* Clients */
-
-.clients{
-
-background:white;
-
-padding:20px;
-
-border-radius:20px;
-
-box-shadow:var(--shadow);
-
-}
-
-.client{
-
-border:1px solid #eee;
-
-padding:20px;
-
-border-radius:18px;
-
-margin-top:20px;
-
-transition:.3s;
-
-}
-
-.client:hover{
-
-transform:translateY(-5px);
-
-box-shadow:0 15px 30px rgba(0,0,0,.08);
-
-}
-
-.client-title{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:15px;
-
-}
-
-.client h3{
-
-font-size:22px;
-
-color:var(--dark);
-
-}
-
-.small-progress{
-
-height:12px;
-
-background:#ddd;
-
-border-radius:30px;
-
-overflow:hidden;
-
-margin-bottom:20px;
-
-}
-
-.small-fill{
-
-height:100%;
-
-width:60%;
-
-background:linear-gradient(90deg,var(--blue),var(--green));
-
-}
-
-.task{
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-padding:10px 0;
-
-font-size:15px;
-
-}
-
-.task input{
-
-width:20px;
-
-height:20px;
-
-accent-color:#22b66b;
-
-}
-
-.add-btn{
-
-margin-top:15px;
-
-padding:12px;
-
-width:100%;
-
-border:none;
-
-background:linear-gradient(90deg,var(--blue),var(--green));
-
-color:white;
-
-border-radius:14px;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.add-btn:hover{
-
-transform:scale(1.03);
-
-}
-
-/* RIGHT */
-
-.right{
-
-display:flex;
-
-flex-direction:column;
-
-gap:20px;
-
-}
-
-.card{
-
-background:white;
-
-border-radius:20px;
-
-padding:20px;
-
-box-shadow:var(--shadow);
-
-}
-
-textarea{
-
-width:100%;
-
-height:180px;
-
-border:none;
-
-outline:none;
-
-resize:none;
-
-font-size:15px;
-
-}
-
-.note{
-
-margin-top:12px;
-
-padding:12px;
-
-background:#f5f5f5;
-
-border-radius:12px;
-
-}
-
-@media(max-width:1000px){
-
-.sidebar{
-
-display:none;
-
-}
-
-.grid{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-</style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar">
 
-<div class="logo">
+        <div class="logo">
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png"
+                alt="Scaleo Logo">
 
-<h2>Scaleo</h2>
+            <div>
+                <h2>Scaleo</h2>
+                <small>Production Dashboard</small>
+            </div>
+
+        </div>
+
+        <nav class="menu">
+
+            <button class="menu-btn active">
+                🏠 Dashboard
+            </button>
+
+            <button class="menu-btn">
+                👥 Clients
+            </button>
+
+            <button class="menu-btn">
+                📈 Statistics
+            </button>
+
+            <button class="menu-btn">
+                📝 Notes
+            </button>
+
+            <button class="menu-btn">
+                ⚙ Settings
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <header class="top">
+
+            <div>
+
+                <h1>Daily Production</h1>
+
+                <p id="welcomeText">
+                    Welcome back 👋
+                </p>
+
+            </div>
+
+            <div class="top-right">
+
+                <span id="clock"></span>
+
+                <h3 id="date"></h3>
+
+            </div>
+
+        </header>
+
+        <!-- Global Progress -->
+
+        <section class="progress-global">
+
+            <div class="progress-header">
+
+                <h2>Today's Progress</h2>
+
+                <span id="globalPercent">0%</span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="globalProgress">
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Grid -->
+
+        <section class="grid">
+
+            <!-- Clients -->
+
+            <section class="clients">
+
+                <div class="section-title">
+
+                    <h2>Clients</h2>
+
+                    <button
+                        class="add-btn"
+                        id="newClient">
+
+                        + New Client
+
+                    </button>
+
+                </div>
+
+                <div id="clientContainer">
+
+                    <!-- Clients generated by JavaScript -->
+
+                </div>
+
+            </section>
+
+            <!-- Right Column -->
+
+            <aside class="right">
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <h2>Reminders</h2>
+
+                        <button id="clearReminders">
+                            Clear
+                        </button>
+
+                    </div>
+
+                    <textarea
+                        id="reminders"
+                        placeholder="Write reminders..."></textarea>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <h2>Brain Dump</h2>
+
+                        <button id="clearBrain">
+                            Clear
+                        </button>
+
+                    </div>
+
+                    <textarea
+                        id="brain"
+                        placeholder="Ideas, thoughts, inspiration..."></textarea>
+
+                </div>
+
+                <div class="card stats">
+
+                    <h2>Quick Stats</h2>
+
+                    <div class="stat">
+
+                        <span>Total Clients</span>
+
+                        <strong id="totalClients">0</strong>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <span>Total Tasks</span>
+
+                        <strong id="totalTasks">0</strong>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <span>Completed</span>
+
+                        <strong id="completedTasks">0</strong>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
 
 </div>
 
-<div class="menu">
+<!-- Client Template -->
 
-<button>🏠 Dashboard</button>
+<template id="clientTemplate">
 
-<button>👥 Clients</button>
+    <div class="client">
 
-<button>📊 Statistics</button>
+        <div class="client-title">
 
-<button>📝 Notes</button>
+            <input
+                type="text"
+                class="client-name"
+                value="New Client">
 
-<button>⚙ Settings</button>
+            <button class="delete-client">
+                ✖
+            </button>
 
-</div>
+        </div>
 
-</div>
+        <div class="small-progress">
 
-<div class="main">
+            <div class="small-fill"></div>
 
-<div class="top">
+        </div>
 
-<h1>Daily Production</h1>
+        <div class="tasks">
 
-<h3 id="date"></h3>
+            <!-- Tasks -->
 
-</div>
+        </div>
 
-<div class="progress-global">
+        <button class="task-btn">
+            + Add Task
+        </button>
 
-<h2>Today's Progress</h2>
+    </div>
 
-<div class="progress-bar">
+</template>
 
-<div class="progress-fill" id="globalProgress"></div>
+<!-- Task Template -->
 
-</div>
+<template id="taskTemplate">
 
-</div>
+    <div class="task">
 
-<div class="grid">
+        <input type="checkbox">
 
-<div class="clients">
+        <input
+            type="text"
+            class="task-input"
+            placeholder="New Task">
 
-<h2>Clients</h2>
+        <button class="delete-task">
+            🗑
+        </button>
 
-<div id="clientContainer">
+    </div>
 
-</div>
+</template>
 
-<button class="add-btn" id="newClient">
-
-+ New Client
-
-</button>
-
-</div>
-
-<div class="right">
-
-<div class="card">
-
-<h2>Reminders</h2>
-
-<textarea id="reminders"
-placeholder="Write reminders..."></textarea>
-
-</div>
-
-<div class="card">
-
-<h2>Brain Dump</h2>
-
-<textarea id="brain"
-placeholder="Ideas, thoughts..."></textarea>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-document.getElementById("date").innerHTML=new Date().toDateString();
-
-</script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
